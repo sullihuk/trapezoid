@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#define degToRad(degreesAngle) ((degreesAngle) * M_PI / 180)
 
-float trap(float a, float b, int n)
+float trapezoidMethod(float a, float b, int n)
 {
 	float h, x, s;
 	int i;
@@ -10,7 +11,7 @@ float trap(float a, float b, int n)
 	float equality(float param)
 	{
 		float equ;
-		equ =(cos(param)+2*pow(sin(param), 2) +3); 
+		equ =(cos(degToRad(param))+2*pow(sin(degToRad(param)), 2) +3); 
 		return equ;
 	}
 	
@@ -29,7 +30,7 @@ float trap(float a, float b, int n)
 int main()
 {
 	int partition[] = {15,20,150,650}, i;
-	for (i=0; i<partition.length; i++)
-		printf("The value of given equality is: %d", trap(-5, 5, partition[i]));
-				return 0;
+	for (i=0; i<sizeof(partition)/4; i++)
+	printf("%d.The value of given equality for %d partition is: %.6f\n", i+1, partition[i], tr(-5, 5, partition[i]));
+	return 0;
 }
