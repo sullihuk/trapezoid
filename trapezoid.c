@@ -31,6 +31,6 @@ int main()
 {
 	int partition[] = {15,20,150,650}, i;
 	for (i=0; i<sizeof(partition)/4; i++)
-	printf("%d.The value of given equality for %d partition is: %.6f\n", i+1, partition[i], tr(-5, 5, partition[i]));
+	printf("%d.The value of given equality for %d partition is: %.6f\n", i+1, partition[i], trapezoidMethod(-5, 5, partition[i]));
 	return 0;
 }
