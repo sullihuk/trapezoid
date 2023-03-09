@@ -5,33 +5,33 @@
 
 float trapezoidMethod(float start, float finish, int n);//Инициализация метода трапеций
 
-float trapezoidMethod(float start, float finish, int n)//Функция реализует метод трапеций для вычисления определенного интеграла
+float trapezoidMethod(float start, float finish, int n)//Функция реализует метод трапеций для вычисления определенного интеграла. Параметрами являются пределы интегрирования и число разбиений, т.к. в условии задачи четыре разных разбиения
 {
-	float h, x, s;//Инициализация переменных 
+	float h, x, s;//Инициализация переменных: шаг интегрирования; значение текущей точки; результат вычислений. 
 	
-	float equality(float param)
+	float equality(float param) // Метод возвращает значение заданной функции в точке, значение которой является параметром этого метода
 	{
-		float equ;
-		equ =(cos(degToRad(param))+2*pow(sin(degToRad(param)), 2) +3); 
+		float equ; // Инциализация возвращаемого значения
+		equ =(cos(degToRad(param))+2*pow(sin(degToRad(param)), 2) +3);// Возращаемому значению присваивается заданная по условию варианта (вариант 9) функция, при этом параметр поступающий на вход преобразуется в радианы, о чем было разъяснено в начале программы 
 		return equ;
 	}
 	
-	s=(equality(start)+equality(finish))/2;
+	s=(equality(start)+equality(finish))/2; //Переменной-результату присваивается вспомогательное, начальное значение, вычисляемое с единичным разбиением.
 	
-	h=(finish-start)/n;
-	x=a+h;
-	for (int i=1; i<=n-1; i++)
+	h=(finish-start)/n;// Вычисление шага интегрирования
+	x=a+h;// Вычисление координаты точки на первом шаге разбиения
+	for (int i=1; i<=n-1; i++)// Цикл производит суммирование значений в точке при заданном шаге, при каждой итерации координата точки также смещается
 	{
 		s += equality(x);
 		x += h;
 	}
-	return s*h;
+	return s*h;//Метод возвращает результат численного интегрирования
 }
 
 int main()
 {
-	int partition[] = {15,20,150,650}, i;
-	for (i=0; i<sizeof(partition)/4; i++)
+	int partition[] = {15,20,150,650}, i; // Инициализация массива разбиений, переменной-счетчика.
+	for (i=0; i<sizeof(partition)/4; i++)//Цикл выводит на экран вычисленные значения для каждого разбиения
 	printf("%d.The value of given equality for %d partition is: %.6f\n", i+1, partition[i], trapezoidMethod(-5, 5, partition[i]));
 	return 0;
 }
