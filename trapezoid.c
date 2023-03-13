@@ -19,7 +19,7 @@ float trapezoidMethod(float start, float finish, int n)//Функция реал
 	s=(equality(start)+equality(finish))/2; //Переменной-результату присваивается вспомогательное, начальное значение, вычисляемое с единичным разбиением.
 	
 	h=(finish-start)/n;// Вычисление шага интегрирования
-	x=a+h;// Вычисление координаты точки на первом шаге разбиения
+	x=start+h;// Вычисление координаты точки на первом шаге разбиения
 	for (int i=1; i<=n-1; i++)// Цикл производит суммирование значений в точке при заданном шаге, при каждой итерации координата точки также смещается
 	{
 		s += equality(x);
@@ -30,8 +30,8 @@ float trapezoidMethod(float start, float finish, int n)//Функция реал
 
 int main()
 {
-	int partition[] = {15,20,150,650}, i; // Инициализация массива разбиений, переменной-счетчика.
-	for (i=0; i<sizeof(partition)/4; i++)//Цикл выводит на экран вычисленные значения для каждого разбиения
+	int partition[] = {15,20,150,650}; // Инициализация массива разбиений, переменной-счетчика.
+	for (int i=0; i<sizeof(partition)/4; i++)//Цикл выводит на экран вычисленные значения для каждого разбиения
 	printf("%d.The value of given equality for %d partition is: %.6f\n", i+1, partition[i], trapezoidMethod(-5, 5, partition[i]));
 	return 0;
 }
